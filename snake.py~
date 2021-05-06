@@ -10,6 +10,20 @@ Exercises
 """
 
 from turtle import *
+<<<<<<< HEAD
+from random import randrange, randint
+from freegames import square, vector
+
+c = ['green','cyan','purple','orange','yellow','blue','lime','cadetble','indigo','gold']
+colors = randint(0,7)+1
+colorf = randint(0,9)
+if colors == colorf:
+    colorf = colorf +1
+
+food = vector(0, 0)
+snake = [vector(10, 0)]
+aim = vector(0, -10)
+=======
 from random import randrange
 from freegames import square, vector
 
@@ -18,6 +32,7 @@ snake = [vector(10, 0)]
 aim = vector(0, -10)
 i = randrange(-5,5)
 j = randrange(-5,5)
+>>>>>>> 1ead2811d38e80449404891e4a49ab163c4fe211
 
 def change(x, y):
     "Change snake direction."
@@ -32,6 +47,8 @@ def move():
     "Move snake forward one segment."
     head = snake[-1].copy()
     head.move(aim)
+<<<<<<< HEAD
+=======
     global i
     global j
     food.x = food.x + i
@@ -41,6 +58,7 @@ def move():
         i = i*(-1)
     if food.y + j <-200 or food.y + j >190:
         j = j*(-1)
+>>>>>>> 1ead2811d38e80449404891e4a49ab163c4fe211
 
     if not inside(head) or head in snake:
         square(head.x, head.y, 9, 'red')
@@ -49,7 +67,11 @@ def move():
 
     snake.append(head)
 
+<<<<<<< HEAD
+    if head == food:
+=======
     if abs(head.x-food.x) <= 5 and abs(head.y-food.y) <= 5:
+>>>>>>> 1ead2811d38e80449404891e4a49ab163c4fe211
         print('Snake:', len(snake))
         food.x = randrange(-15, 15) * 10
         food.y = randrange(-15, 15) * 10
@@ -59,9 +81,15 @@ def move():
     clear()
 
     for body in snake:
+<<<<<<< HEAD
+        square(body.x, body.y, 9, c[colors])
+
+    square(food.x, food.y, 9, c[colorf])
+=======
         square(body.x, body.y, 9, 'black')
 
     square(food.x, food.y, 9, 'green')
+>>>>>>> 1ead2811d38e80449404891e4a49ab163c4fe211
     update()
     ontimer(move, 100)
 
