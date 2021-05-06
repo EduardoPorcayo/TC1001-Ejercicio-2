@@ -22,6 +22,8 @@ if colors == colorf:
 food = vector(0, 0)
 snake = [vector(10, 0)]
 aim = vector(0, -10)
+i = randrange(-5,5)
+j = randrange(-5,5)
 
 def change(x, y):
     "Change snake direction."
@@ -36,6 +38,15 @@ def move():
     "Move snake forward one segment."
     head = snake[-1].copy()
     head.move(aim)
+    global i
+    global j
+    food.x = food.x + i
+    food.y = food.y + j
+
+    if food.x + i <-200 or food.x + i >190:
+        i = i*(-1)
+    if food.y + j <-200 or food.y + j >190:
+        j = j*(-1)
 
     if not inside(head) or head in snake:
         square(head.x, head.y, 9, 'red')
@@ -44,10 +55,12 @@ def move():
 
     snake.append(head)
 
-    if head == food:
+    if abs(head.x-food.x) <= 5 and abs(head.y-food.y) <= 5:
         print('Snake:', len(snake))
         food.x = randrange(-15, 15) * 10
         food.y = randrange(-15, 15) * 10
+        i = randrange(-5,5)
+        j = randrange(-5,5)
     else:
         snake.pop(0)
 
